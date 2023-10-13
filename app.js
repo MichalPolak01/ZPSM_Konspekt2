@@ -1,29 +1,20 @@
-const _ = require('lodash');
+const collections = [
+    {},
+    15,
+    "hello@test.pl",
+    null,
+    ['aaa', 'bbb', 5],
+    'admin@gmail.com',
+    undefined,
+    'a34@yahoo.com',
+    '321@a',
+    '321.pl'
+];
 
-const user = {
-    name: 'Michał',
-    surname: 'Polak',
-    allGrades: [
-        {
-            subjectName: 'Matematyka',
-            grades: [5,4,3,5,2],
-            weight: 3
-        },
-        {
-            subjectName: 'Historia',
-            grades: [3,3.5,2],
-            weight: 1
-        },
-        {
-            subjectName: 'Informatyka',
-            grades: [4,3,3.5],
-            weight: 5
-        }
-    ]
+const getMails = (collection) => {
+    const pattern = /^[a-zA-Z0-9]+@([a-zA-Z0-9]+\.)+[a-z]+$/i;
+
+    collection.forEach(str => {(pattern.test(str))? console.log(str) : ""});
 }
 
-const getSubjectName = (usr, weight) => {
-    return _.find(usr.allGrades, {'weight' : weight}).subjectName;
-} 
-
-console.log("Nazwa przedmiotu: " + getSubjectName(user, 1));
+getMails(collections);

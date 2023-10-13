@@ -22,17 +22,8 @@ const user = {
     ]
 }
 
-const average = (usr) => {
-    let gradesFromSubject = usr.allGrades;
+const getSubjectName = (usr, weight) => {
+    return _.find(usr.allGrades, {'weight' : weight}).subjectName;
+} 
 
-    let mianownik = 0;
-    let dzielnik = 0;
-    for(let i =0; i < gradesFromSubject.length; i++) {
-        mianownik += _.sum(gradesFromSubject[i].grades) * gradesFromSubject[i].weight;
-        dzielnik += gradesFromSubject[i].grades.length * gradesFromSubject[i].weight;
-    }
-    // console.log(mianownik/dzielnik);
-    return mianownik / dzielnik;
-}
-
-console.log("Srednia ocen dla " + user.name + " " + user.surname + " wynosi: " + average(user));
+console.log("Nazwa przedmiotu: " + getSubjectName(user, 1));
